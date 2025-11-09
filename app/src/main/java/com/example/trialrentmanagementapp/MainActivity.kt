@@ -1,6 +1,8 @@
 package com.example.trialrentmanagementapp
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -18,5 +20,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        val textFirstNameInput = findViewById<TextView>(R.id.editTextText)
+        val textSecondNameInput = findViewById<TextView>(R.id.editTextText2)
+        val textViewOutput = findViewById<TextView>(R.id.textView)
+        val clickButton = findViewById<Button>(R.id.button)
+
+        clickButton.setOnClickListener {
+            val firstName = textFirstNameInput.text.toString()
+            val secondName = textSecondNameInput.text.toString()
+            textViewOutput.text = "Name: $firstName | Second Name: $secondName"
+        }
     }
 }
