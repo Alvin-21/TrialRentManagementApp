@@ -1,5 +1,6 @@
 package com.example.trialrentmanagementapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -26,11 +27,19 @@ class MainActivity : ComponentActivity() {
         val textSecondNameInput = findViewById<EditText>(R.id.editTextText2)
         val textViewOutput = findViewById<TextView>(R.id.textView)
         val clickButton = findViewById<Button>(R.id.button)
+        val openSecondActivityButton = findViewById<Button>(R.id.WelcomeScreen)
 
         clickButton.setOnClickListener {
             val firstName = textFirstNameInput.text.toString()
             val secondName = textSecondNameInput.text.toString()
             textViewOutput.text = "Name: $firstName | Second Name: $secondName"
+        }
+
+        openSecondActivityButton.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java)
+            val firstName = textFirstNameInput.text.toString()
+            intent.putExtra("TENANT_NAME", firstName)
+            startActivity(intent)
         }
     }
 }
